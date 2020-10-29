@@ -6,11 +6,12 @@
     <input type="email" placeholder="email" v-model="emailField"><br>
     <input type="number" placeholder="idade" v-nome="idadeField"><br> 
     <button @click="cadastrarUsuarios">Cadastrar</button>   
+   
 
 
     <div v-for="(cliente,index) in clientes" :key="cliente.id">
       <h1>{{index}}</h1>
-     <Cliente :cliente="cliente"/>
+     <Cliente :cliente="cliente" @meDelete="deletarUsuario($event)"/>
       <input type="text" v-model="cliente.nome">
     </div>
    
@@ -64,8 +65,12 @@ export default {
         this.idadeField = 0;
         this.deuErro=false;
           }
-        
-      
+              
+      },
+      deletarUsuario: function($event){
+        console.log("Recebeno o evento");
+        console.log($event);
+        $event.component.isPremium = true;
       }
     }
 }

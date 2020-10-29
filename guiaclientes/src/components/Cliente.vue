@@ -22,6 +22,7 @@
         <p>Email: {{cliente.email}}</p>
          <p>Idade: {{cliente.idade}}</p>
         <button @click="mudarCor($event)">Mudar Cor</button>
+         <button @click="emitirEventoDelete">Deletar</button>
     </div>
 </template>
 
@@ -53,6 +54,10 @@ export default {
                                         this.isPremium = false;  
                               }
                               */
+                        },
+                        emitirEventoDelete: function(){
+                                console.log("Emitir evento filho");
+                                this.$emit("meDelete",{curso: "formação vue.js",emPromocao: true,component: this});
                         }
                 }
 }
